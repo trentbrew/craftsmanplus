@@ -9,7 +9,7 @@ const data = computed(() => store.saved);
 
 <template>
     <div class="flex-col center-content mt-12">
-        <ul v-if="data && data.length > 0" class="dropdown overflow-y-auto pr-[16px] max-h-full rounded-lg">
+        <ul v-if="data && data.length > 0" class="dropdown overflow-y-auto pr-[16px] max-h-[500px] rounded-lg">
             <li
             v-for='(item, index) in data'
             :key='index'
@@ -37,3 +37,20 @@ const data = computed(() => store.saved);
         </h3>
     </div>
 </template>
+
+<style>
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #00000021; 
+  border-radius: 24px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00000011; 
+}
+::-webkit-scrollbar-track {
+  border-radius: 24px;
+}
+</style>
