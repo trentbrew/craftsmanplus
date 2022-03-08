@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import { ref, Ref, watch, nextTick } from 'vue'
+import { ref } from 'vue'
 import axios from 'axios'
 
-const books = ref()
 const searchQuery = ref('')
-const selected = ref(null)
-const loading = ref(false)
-
+const books = ref()
 const input = ref()
 
 function fetchBooks(query: string) {
-  loading.value = true
   const q = query.split(' ').join('+')
   return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${q}`).then((res) => {
-    loading.value = false
     return res.data.items.filter((item: any) => item.volumeInfo.imageLinks?.thumbnail)
   })
 }
